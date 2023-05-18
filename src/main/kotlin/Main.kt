@@ -7,6 +7,8 @@ fun main(args: Array<String>) {
     val noDiscountValue: Int = 1_000
     val firstDiscountLevel: Int = 1_001
     val noDiscountResult: Int = 0
+    val intermediateDiscount: Double
+
 
     val discount = if (purchase <= noDiscountValue) {
         noDiscountResult
@@ -19,7 +21,8 @@ fun main(args: Array<String>) {
     }
     else {
         if (regularClient) {
-            (purchase * discountPercent) + ((purchase - (purchase * discountPercent)) * discountPercentFull)
+            intermediateDiscount = (purchase * discountPercent)
+            (purchase - intermediateDiscount) * discountPercentFull
 /*
 Скидка для постоянного клиента от 10_001р через две операции.
 Сначала я вычисли значение обычной скидки((purchase * discountPercent))
